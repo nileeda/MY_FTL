@@ -2,12 +2,10 @@ CC	=	gcc
 NAME	=	my_ftl
 SRC	=	main.c \
 		air_shed.c \
-		my_putstr.c \
-		my_putchar.c \
-		my_strdup.c \
-		my_strlen.c \
 		my_strcpy.c \
-		my_put_nbr.c
+		my_put_nbr.c \
+		container.c \
+		my_string.c
 OBJS	=	$(SRC:%.c=%.o)
 RM	=	rm -f
 CFLAGS	=	-Wall -Werror -Wextra
