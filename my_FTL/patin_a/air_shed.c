@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:29:13 2016 PATIN Adeline
-** Last update Mon Nov  7 13:20:59 2016 PATIN Adeline
+** Last update Mon Nov  7 13:43:27 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -25,6 +25,7 @@ t_ship		*create_ship()
   ship->hull = 50;
   ship->weapon = NULL;
   ship->drive = NULL;
+  ship->nav_tools = NULL;
   my_putstr("amélioration du vaisseau termine !\n");
   return (ship);
 }
@@ -64,5 +65,25 @@ int		add_ftl_drive_to_ship(t_ship *ship)
   drive->system_state = my_strdup("online");
   ship->drive = drive;
   my_putstr("le reacteur a ete ajout avec succes!\n");
+  return (1);
+}
+
+int			add_navigation_tools_to_ship(t_ship *ship)
+{
+  t_navigation_tools	*nav_tools;
+
+  my_putstr("ajout des outils de navigations...\n");
+  nav_tools = malloc(sizeof(*nav_tools));
+  if (nav_tools == NULL)
+    {
+      my_putstr("votre vaisseau a explose lorsque vous avez pose les ");
+      my_putstr("outils de navigations\n");
+      return (0);
+    }
+  nav_tools->sector = 0;
+  nav_tools->evade = 25;
+  nav_tools->system_state = my_strdup("online");
+  ship->nav_tools = nav_tools;
+  my_putstr("les outils de navigations ont ete ajoutes avec succes\n");
   return (1);
 }
