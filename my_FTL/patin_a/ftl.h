@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Tue Nov  8 11:37:36 2016 PATIN Adeline
+** Last update Tue Nov  8 18:35:11 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -56,7 +56,7 @@ typedef struct	s_container
 typedef struct	s_repair_command
 {
   char		*repair;
-  void		(*funct_point)(t_ship *ship);
+  int		(*funct_point)(t_ship *ship);
 }		t_repair_command;
 
 void		my_putchar(char c);
@@ -74,9 +74,9 @@ void		add_freight_to_container(t_ship *ship, t_freight *freight);
 void		del_freight_from_container(t_ship *ship, t_freight *freight);
 void		get_bonus(t_ship *ship);
 void		system_control(t_ship *ship);
-void		weapon_system_repair(t_ship *ship);
-void		ftl_drive_system_repair(t_ship *ship);
-void		navigation_tools_system_repair(t_ship *ship);
 char		*readline(void);
-void		system_repair(t_ship *ship);
+int		system_repair(t_ship *ship);
+int		navigation_tools_system_repair(t_ship *ship);
+int		weapon_system_repair(t_ship *ship);
+int		ftl_drive_system_repair(t_ship *ship);
 #endif
