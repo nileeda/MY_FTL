@@ -7,15 +7,15 @@ SRC	=	main.c \
 		container.c \
 		my_string.c \
 		system_control.c \
-		system_repair.c
+		system_repair.c \
+		readline.c
 OBJS	=	$(SRC:%.c=%.o)
 RM	=	rm -f
 CFLAGS	=	-Wall -Werror -Wextra
 
 $(NAME)	:	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(CFLAGS)
-all	:
-		$(NAME)
+all	:	$(NAME)
 
 clean	:
 		$(RM) $(OBJS)
