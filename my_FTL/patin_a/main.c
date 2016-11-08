@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Tue Nov  8 09:29:12 2016 PATIN Adeline
+** Last update Tue Nov  8 09:58:14 2016 PATIN Adeline
 */
 #include <stdlib.h>
 #include "ftl.h"
@@ -42,7 +42,7 @@ int		main()
   ship->weapon->system_state = my_strdup("offline");
   system_control(ship);
   weapon_system_repair(ship);
-  system_control(ship);
+  //system_control(ship);
   //my_putstr(freight->item);
   //my_putstr(freight2->item);
   //my_putstr(freight3->item);
