@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Mon Nov  7 16:43:40 2016 PATIN Adeline
+** Last update Mon Nov  7 19:08:07 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -47,4 +47,48 @@ void	add_freight_to_container(t_ship *ship, t_freight *freight)
       freight->next = NULL;
     }
   ship->container->nb_elem++;
+}
+
+void	del_freight_from_container(t_ship *ship, t_freight *freight)
+{
+  if (freight != NULL)
+    {
+      if (freight->prev == NULL && freight->next != NULL)
+	{
+	  freight->next->prev = freight->prev;
+	  ship->container->first = freight->next;
+	}
+      else if (freight->next == NULL && freight->prev != NULL)
+	{
+	  freight->prev->next = freight->next;
+	  ship->container->last = freight->prev;
+	}
+      else if (freight->next != NULL && freight->prev != NULL)
+	{
+	  freight->prev->next = freight->next;
+	  freight->next->prev = freight->prev;
+	}
+      ship->container->nb_elem--;
+      free(freight);
+    }
+}
+
+void		get_bonus(t_ship *ship)
+{
+  t_freight	*pointeur;
+
+  pointeur = ship->container->first;
+  while (pointeur != NULL)
+    {
+      if (my_strcmp(pointeur->item, "scrap") != 0)
+	{
+	  if (my_strcmp(pointeur->item, "attackbonus") == 0)
+	    ship->weapon->damage = ship->weapon->damage + 5;
+	  else if (my_strcmp(pointeur->item, "evadebonus") == 0)
+	    ship->nav_tools->evade = ship->nav_tools->evade + 3;
+	  else if (my_strcmp(pointeur->item, "energy") == 0)
+	    ship->drive->energy = ship->drive->energy + 1;
+	}
+      pointeur = pointeur->next;
+    }
 }
