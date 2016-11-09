@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Wed Nov  9 17:11:14 2016 PATIN Adeline
+** Last update Wed Nov  9 19:43:31 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -39,38 +39,56 @@ void		gameloop(t_ship *ship)
 {
   char		*command;
   t_enemy	*ia;
-  int		i;
-
-  i = 0;
 
   ia = malloc(sizeof(*ia));
+  if (ia == NULL)
+    my_putstr("ERROR\n");
   while (ship->nav_tools->sector != 10)
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
-      while (my_control[i].control != NULL)
+      ia = test_opt(ship, ia, command);
+      if (ia != NULL)
 	{
-	  if (my_strcmp(command, my_control[i].control) == 0)
-	    {
-	      	  if (my_strcmp(command, my_control[2].control) == 0)
-		    {
-		      my_control[2].funct(ship);
-		      ia = appear(ia);
-		      my_put_nbr(ia->damage);
-		    }
-		  else
-		    {
-		      my_putstr_color("blue", "Execution en cours...\n");
-		      my_control[i].funct(ship);
-		    }
-	    }
-	  i++;
+	  lifepoint_ia(ia);
+	  attack_ia(ship, ia);
 	}
-      i = 0;
     }
 }
 
 int	test(t_ship *ship)
 {
   return (ship->nav_tools->sector);
+}
+
+
+t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
+{
+  int	i;
+  int	bool;
+
+  i = 0;
+  bool = 0;
+  while (my_control[i].control != NULL)
+    {
+      if (my_strcmp(command, my_control[i].control) == 0)
+	{
+	  if (my_strcmp(command, my_control[2].control) == 0)
+	    {
+	      my_control[2].funct(ship);
+	      ia = appear(ia);
+	      bool = 1;
+	    }
+	  else
+	    {
+	      my_putstr_color("blue", "Execution en cours...\n");
+	      my_control[i].funct(ship);
+	      return (NULL);
+	    }
+	}
+      i++;
+    }
+  if (bool == 0)
+    my_putstr_color("red", "[COMMANDE INCONNUE]\n");
+  return (ia);
 }
