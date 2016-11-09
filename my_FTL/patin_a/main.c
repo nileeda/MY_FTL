@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Tue Nov  8 11:37:16 2016 PATIN Adeline
+** Last update Wed Nov  9 11:55:37 2016 PATIN Adeline
 */
 #include <stdlib.h>
 #include "ftl.h"
@@ -20,28 +20,23 @@ int		main()
   freight = malloc(sizeof(*freight));
   if (freight == NULL)
     return (0);
-  freight->item = my_strdup("no item");
   freight2 = malloc(sizeof(*freight2));
   if (freight2 == NULL)
     return (0);
-  freight2->item = my_strdup("item2");
   freight3 = malloc(sizeof(*freight3));
   if (freight3 == NULL)
     return (0);
-  freight3->item = my_strdup("energy");
-  ship = create_ship();
-  add_weapon_to_ship(ship);
-  add_ftl_drive_to_ship(ship);
-  add_navigation_tools_to_ship(ship);
-  add_container_to_ship(ship);
+  ship = start();
+  gameloop(ship);
   add_freight_to_container(ship, freight);
-  add_freight_to_container(ship, freight2);
-  add_freight_to_container(ship, freight3);
-  freight->item = my_strdup("attackbonus");
-  get_bonus(ship);
-  ship->weapon->system_state = my_strdup("offline");
-  system_control(ship);
-  system_repair(ship);
+  /* get_bonus(ship); */
+  /* /\* add_freight_to_container(ship, freight3); *\/ */
+  /* /\* get_bonus(ship); *\/ */
+  /* ship->weapon->system_state = my_strdup("offline"); */
+  /* system_control(ship); */
+  /* system_repair(ship); */
+  /* add_freight_to_container(ship, freight2); */
+  /* get_bonus(ship); */
   //repair_com[0].funct_point(ship);
   //weapon_system_repair(ship);
   //system_control(ship);
