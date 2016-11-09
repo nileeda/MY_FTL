@@ -8,7 +8,11 @@ SRC	=	main.c \
 		my_string.c \
 		system_control.c \
 		system_repair.c \
-		readline.c
+		readline.c \
+		game_functions.c \
+		my_getnbr.c \
+		gameloop.c \
+		ennemy.c
 OBJS	=	$(SRC:%.c=%.o)
 RM	=	rm -f
 CFLAGS	=	-Wall -Werror -Wextra

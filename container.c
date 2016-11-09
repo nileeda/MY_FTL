@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Mon Nov  7 19:08:07 2016 PATIN Adeline
+** Last update Wed Nov  9 14:05:20 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -32,6 +32,8 @@ int		add_container_to_ship(t_ship *ship)
 
 void	add_freight_to_container(t_ship *ship, t_freight *freight)
 {
+  char	*my_bonus;
+  my_bonus = select_bonus();
   if (ship->container->last == NULL && ship->container->first == NULL)
     {
       freight->prev = NULL;
@@ -47,6 +49,9 @@ void	add_freight_to_container(t_ship *ship, t_freight *freight)
       freight->next = NULL;
     }
   ship->container->nb_elem++;
+  freight->item = my_bonus;
+  my_putstr(freight->item);
+  my_putchar('\n');
 }
 
 void	del_freight_from_container(t_ship *ship, t_freight *freight)
@@ -73,7 +78,7 @@ void	del_freight_from_container(t_ship *ship, t_freight *freight)
     }
 }
 
-void		get_bonus(t_ship *ship)
+int		get_bonus(t_ship *ship)
 {
   t_freight	*pointeur;
 
@@ -91,4 +96,5 @@ void		get_bonus(t_ship *ship)
 	}
       pointeur = pointeur->next;
     }
+  return (0);
 }

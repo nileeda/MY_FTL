@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 19:13:23 2016 PATIN Adeline
-** Last update Tue Nov  8 09:04:14 2016 PATIN Adeline
+** Last update Wed Nov  9 14:19:43 2016 PATIN Adeline
 */
 #include "ftl.h"
 
@@ -37,9 +37,10 @@ void	weapon_system_check(t_ship *ship)
     my_putstr_color("green", "systeme d'armement OK!\n");
 }
 
-void	system_control(t_ship *ship)
+int	system_control(t_ship *ship)
 {
   weapon_system_check(ship);
   navigation_tools_system_check(ship);
   ftl_drive_system_check(ship);
+  return (0);
 }
