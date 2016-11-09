@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Wed Nov  9 17:07:01 2016 PATIN Adeline
+** Last update Wed Nov  9 19:43:03 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -100,4 +100,7 @@ void		gameloop(t_ship *ship);
 int		stat(t_ship *ship);
 int		help(t_ship *ship);
 t_enemy		*appear(t_enemy *enemy);
+void		lifepoint_ia(t_enemy *enemy);
+t_enemy		*test_opt(t_ship *ship, t_enemy *ia, char *str);
+int		attack_ia(t_ship *ship, t_enemy *enemy);
 #endif
