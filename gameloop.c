@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Thu Nov 10 17:52:15 2016 PATIN Adeline
+** Last update Thu Nov 10 18:21:17 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -30,7 +30,7 @@ t_ship		*start()
   add_weapon_to_ship(ship);
   add_ftl_drive_to_ship(ship);
   add_navigation_tools_to_ship(ship);
-  //add_container_to_ship(ship);
+  add_container_to_ship(ship);
   return (ship);
 }
 
