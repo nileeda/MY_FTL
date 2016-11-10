@@ -5,13 +5,13 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Wed Nov  9 19:43:03 2016 PATIN Adeline
+** Last update Thu Nov 10 12:03:25 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
 # define	__FTL_H__
 
-typedef struct			s_ship
+typedef				struct	s_ship
 {
   int				hull;
   struct s_weapon		*weapon;
@@ -20,52 +20,52 @@ typedef struct			s_ship
   struct s_container		*container;
 }				t_ship;
 
-typedef struct	s_weapon
+typedef		struct s_weapon
 {
   char		*system_state;
   int		damage;
 }		t_weapon;
 
-typedef struct	s_ftl_drive
+typedef		struct s_ftl_drive
 {
   char		*system_state;
   int		energy;
 }		t_ftl_drive;
 
-typedef struct	s_navigation_tools
+typedef		struct s_navigation_tools
 {
   char		*system_state;
   int		sector;
   int		evade;
 }		t_navigation_tools;
 
-typedef struct		s_freight
+typedef			struct s_freight
 {
   char			*item;
   struct s_freight	*next;
   struct s_freight	*prev;
 }			t_freight;
 
-typedef struct	s_container
+typedef		struct s_container
 {
   int		nb_elem;
   t_freight	*first;
   t_freight	*last;
 }		t_container;
 
-typedef struct	s_repair_command
+typedef		struct s_repair_command
 {
   char		*repair;
   int		(*funct_point)(t_ship *ship);
 }		t_repair_command;
 
-typedef struct	s_gamecontrol
+typedef		struct s_gamecontrol
 {
   char		*control;
   int		(*funct)();
 }		t_gamecontrol;
 
-typedef struct	s_enemy
+typedef		struct s_enemy
 {
   int		damage;
   int		lifepoint;
@@ -99,8 +99,13 @@ t_ship		*start();
 void		gameloop(t_ship *ship);
 int		stat(t_ship *ship);
 int		help(t_ship *ship);
-t_enemy		*appear(t_enemy *enemy);
+t_enemy		*appear();
 void		lifepoint_ia(t_enemy *enemy);
 t_enemy		*test_opt(t_ship *ship, t_enemy *ia, char *str);
 int		attack_ia(t_ship *ship, t_enemy *enemy);
+int		is_alive(t_enemy *enemy, t_ship *ship);
+int		attack_ship(t_ship *ship, t_enemy *enemy);
+t_enemy		*actions_ia(t_enemy *enemy, t_ship *ship);
+int		detect_freight();
+int		player_alive(t_ship *ship);
 #endif
