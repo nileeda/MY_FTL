@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Thu Nov 10 18:28:04 2016 PATIN Adeline
+** Last update Thu Nov 10 19:25:55 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -73,6 +73,11 @@ void	del_freight_from_container(t_ship *ship, t_freight *freight)
 	  freight->prev->next = freight->next;
 	  freight->next->prev = freight->prev;
 	}
+      else if (freight->next == NULL && freight->prev == NULL)
+	{
+	  ship->container->first = NULL;
+	  ship->container->last = NULL;
+	}
       ship->container->nb_elem--;
       free(freight);
     }
@@ -82,6 +87,7 @@ int		get_bonus(t_ship *ship)
 {
   t_freight	*pointeur;
 
+  pointeur = malloc(sizeof(*pointeur));
   pointeur = ship->container->first;
   while (pointeur != NULL)
     {
@@ -95,6 +101,7 @@ int		get_bonus(t_ship *ship)
 	    ship->drive->energy = ship->drive->energy + 1;
 	  my_putstr_color("blue", "Bonus ajoutés.\n");
 	}
+      del_freight_from_container(ship, pointeur);
       pointeur = pointeur->next;
     }
   return (0);
