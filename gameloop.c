@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Thu Nov 10 13:51:35 2016 PATIN Adeline
+** Last update Thu Nov 10 15:39:41 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -44,15 +44,15 @@ void		gameloop(t_ship *ship)
   ia = malloc(sizeof(*ia));
   if (ia == NULL)
     my_putstr("ERROR MALLOC IA\n");
+  ia->lifepoint = 0;
   while (ship->nav_tools->sector != 10 && alive == 1)
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
+      //test_opt_select(ship, ia, command);
       ia = test_opt(ship, ia, command);
-      if (ia != NULL)
-	{
-	  ia = actions_ia(ia, ship);
-	}
+      if (ia != NULL /*&& ia->lifepoint >= 0*/)
+	ia = actions_ia(ia, ship);
       alive = player_alive(ship);
     }
 }
@@ -74,7 +74,9 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
 	      ia = appear();
 	    }
 	  else
-	    my_control[i].funct(ship, ia);
+	    {
+	      my_control[i].funct(ship, ia);
+	    }
 	  bool = 1;
 	}
       i++;

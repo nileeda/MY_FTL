@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Thu Nov 10 11:55:14 2016 PATIN Adeline
+** Last update Thu Nov 10 15:39:06 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -99,9 +99,12 @@ t_enemy	*actions_ia(t_enemy *enemy, t_ship *ship)
   int	alive;
 
   alive = 0;
-  lifepoint_ia(enemy);
-  attack_ia(ship, enemy);
-  alive = is_alive(enemy, ship);
+  if (enemy->lifepoint >= 0)
+    {
+      lifepoint_ia(enemy);
+      attack_ia(ship, enemy);
+      alive = is_alive(enemy, ship);
+    }
   if (alive == 0)
     {
       enemy = NULL;
