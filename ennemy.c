@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Thu Nov 10 16:02:16 2016 PATIN Adeline
+** Last update Thu Nov 10 17:50:06 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -27,6 +27,7 @@ t_enemy		*appear()
       enemy = malloc(sizeof(*enemy));
       enemy->damage = damage_init;
       enemy->lifepoint = lifepoint_init;
+      enemy->isalive = 1;
       damage_init = damage_init * 1.5;
       lifepoint_init = lifepoint_init * 1.5;
       return (enemy);
@@ -72,7 +73,7 @@ int	attack_ia(t_ship *ship, t_enemy *enemy)
       ship->hull = ship->hull - enemy->damage;
     }
   else
-    my_putstr_color("magenta", "L'ennemi n'attaque pas. Bouuuuh\n");
+    my_putstr_color("cyan", "L'ennemi n'attaque pas. Bouuuuh\n");
   return (ship->nav_tools->sector);
 }
 
@@ -95,8 +96,8 @@ t_enemy	*actions_ia(t_enemy *enemy, t_ship *ship)
 {
   int	alive;
 
-  alive = 0;
-  if (enemy->lifepoint > 0)
+  alive = 1;
+  if (enemy->lifepoint >= 0)
     {
       lifepoint_ia(enemy);
       attack_ia(ship, enemy);

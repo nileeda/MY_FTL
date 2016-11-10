@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Thu Nov 10 11:57:00 2016 PATIN Adeline
+** Last update Thu Nov 10 18:02:36 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -36,13 +36,21 @@ char	*select_bonus()
   return (bonus);
 }
 
-int	jump(t_ship *ship)
+int	jump(t_ship *ship, t_enemy *enemy)
 {
-  my_putstr_color("blue", "Préparation du super saut... 3... 2... 1...\n");
-  ship->nav_tools->sector++;
-  ship->drive->energy--;
-  my_putstr_color("blue", "Bienvenue dans la dimention suivante.\n");
-  return (ship->nav_tools->sector);
+  if (enemy == NULL)
+    {
+      my_putstr_color("blue", "Préparation du super saut... 3... 2... 1...\n");
+      ship->nav_tools->sector++;
+      ship->drive->energy--;
+      my_putstr_color("blue", "Bienvenue dans la dimention suivante.\n");
+      return (1);
+    }
+  else
+    {
+      my_putstr("Les ressorts sont morts, chef...\n");
+      return (0);
+    }
 }
 
 int	stat(t_ship *ship)
@@ -75,4 +83,12 @@ int	help(t_ship *ship)
   my_putstr("attack\ndetect\njump\ngetbonus\ncontrolsystem\n");
   my_putstr("repairsystem\nstat\nhelp\n");
   return (ship->nav_tools->sector);
+}
+
+int	detect_freight()
+{
+  char	*bonus;
+
+  bonus = select_bonus();
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Thu Nov 10 14:17:37 2016 PATIN Adeline
+** Last update Thu Nov 10 17:12:09 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -69,7 +69,7 @@ typedef		struct s_enemy
 {
   int		damage;
   int		lifepoint;
-
+  int		isalive;
 }		t_enemy;
 
 void		my_putchar(char c);
@@ -94,7 +94,7 @@ int		weapon_system_repair(t_ship *ship);
 int		ftl_drive_system_repair(t_ship *ship);
 char		*select_bonus();
 int		my_getnbr(char *str);
-int		jump(t_ship *ship);
+int		jump(t_ship *ship, t_enemy *enemy);
 t_ship		*start();
 void		gameloop(t_ship *ship);
 int		stat(t_ship *ship);
@@ -108,5 +108,4 @@ int		attack_ship(t_ship *ship, t_enemy *enemy);
 t_enemy		*actions_ia(t_enemy *enemy, t_ship *ship);
 int		detect_freight();
 int		player_alive(t_ship *ship);
-void		test_opt_select(t_ship *ship, t_enemy *ia, char *command);
 #endif
