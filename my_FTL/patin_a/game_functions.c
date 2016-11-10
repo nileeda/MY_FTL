@@ -5,11 +5,13 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Thu Nov 10 18:26:45 2016 PATIN Adeline
+** Last update Thu Nov 10 19:54:36 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
 #include <time.h>
+
+static int	detect = -1;
 
 char	*select_bonus()
 {
@@ -83,22 +85,30 @@ int	help(t_ship *ship)
   return (ship->nav_tools->sector);
 }
 
-int	detect_freight(t_ship *ship)
+int		detect_freight(t_ship *ship)
 {
-  char	*bonus;
-  int	i;
+  char		*bonus;
+  int		i;
   t_freight	*fret;
 
   i = 0;
-  while (i < 10)
+  if (detect < ship->nav_tools->sector)
     {
-      fret = malloc(sizeof(*fret));
-      if (fret == NULL)
-	return (42);
-      bonus = select_bonus();
-      fret->item = my_strdup(bonus);
-      add_freight_to_container(ship, fret);
-      i++;
+      while (i < 10)
+	{
+	  fret = malloc(sizeof(*fret));
+	  if (fret == NULL)
+	    return (42);
+	  bonus = select_bonus();
+	  fret->item = my_strdup(bonus);
+	  add_freight_to_container(ship, fret);
+	  i++;
+	}
+      detect = ship->nav_tools->sector;
+      my_putstr_color("blue", "Ajout du fret réussi\n");
+      return (0);
     }
-  return (0);
+  else
+    my_putstr_color("blue", "Plus de fret sur cette zone\n");
+  return (1);
 }
