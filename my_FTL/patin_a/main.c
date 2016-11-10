@@ -5,13 +5,16 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Thu Nov 10 18:00:19 2016 PATIN Adeline
+** Last update Thu Nov 10 18:22:18 2016 PATIN Adeline
 */
 #include "ftl.h"
+#include <time.h>
+#include <stdlib.h>
 
 int		main()
 {
   t_ship	*ship;
+  srand(time (NULL));
 
   my_putstr_color("clear", "\n");
   ship = start();

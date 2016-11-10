@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Wed Nov  9 14:05:20 2016 PATIN Adeline
+** Last update Thu Nov 10 18:28:04 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -93,6 +93,7 @@ int		get_bonus(t_ship *ship)
 	    ship->nav_tools->evade = ship->nav_tools->evade + 3;
 	  else if (my_strcmp(pointeur->item, "energy") == 0)
 	    ship->drive->energy = ship->drive->energy + 1;
+	  my_putstr_color("blue", "Bonus ajoutés.\n");
 	}
       pointeur = pointeur->next;
     }

@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Thu Nov 10 18:02:36 2016 PATIN Adeline
+** Last update Thu Nov 10 18:26:45 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -16,11 +16,9 @@ char	*select_bonus()
   int	random;
   char	*bonus;
 
-  srand(time (NULL));
   random = (rand()%10) + 1;
   if (random > 7)
     {
-      srand(time (NULL));
       random = (rand()%100) + 1;
       if (random >= 1 && random < 34)
 	bonus = "attackbonus";
@@ -85,10 +83,22 @@ int	help(t_ship *ship)
   return (ship->nav_tools->sector);
 }
 
-int	detect_freight()
+int	detect_freight(t_ship *ship)
 {
   char	*bonus;
+  int	i;
+  t_freight	*fret;
 
-  bonus = select_bonus();
+  i = 0;
+  while (i < 10)
+    {
+      fret = malloc(sizeof(*fret));
+      if (fret == NULL)
+	return (42);
+      bonus = select_bonus();
+      fret->item = my_strdup(bonus);
+      add_freight_to_container(ship, fret);
+      i++;
+    }
   return (0);
 }
