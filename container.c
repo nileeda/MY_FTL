@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Thu Nov 10 19:25:55 2016 PATIN Adeline
+** Last update Thu Nov 10 19:53:25 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -50,8 +50,6 @@ void	add_freight_to_container(t_ship *ship, t_freight *freight)
     }
   ship->container->nb_elem++;
   freight->item = my_bonus;
-  my_putstr(freight->item);
-  my_putchar('\n');
 }
 
 void	del_freight_from_container(t_ship *ship, t_freight *freight)
