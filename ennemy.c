@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Thu Nov 10 15:39:06 2016 PATIN Adeline
+** Last update Thu Nov 10 16:02:16 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -82,9 +82,6 @@ int	is_alive(t_enemy *enemy, t_ship *ship)
 
   if (enemy->lifepoint <= 0)
     {
-      my_putstr_color("cyan", "L'ennnemi est ");
-      my_putstr_color("red", "mort. ");
-      my_putstr_color("cyan", "MOUHAHAHA. Bien joué commandant.\n");
       srand(time (NULL));
       random = (rand()%2) + 1;
       if (random == 1)
@@ -99,7 +96,7 @@ t_enemy	*actions_ia(t_enemy *enemy, t_ship *ship)
   int	alive;
 
   alive = 0;
-  if (enemy->lifepoint >= 0)
+  if (enemy->lifepoint > 0)
     {
       lifepoint_ia(enemy);
       attack_ia(ship, enemy);
@@ -107,8 +104,10 @@ t_enemy	*actions_ia(t_enemy *enemy, t_ship *ship)
     }
   if (alive == 0)
     {
+      my_putstr_color("cyan", "L'ennnemi est ");
+      my_putstr_color("red", "mort. ");
+      my_putstr_color("cyan", "MOUHAHAHA. Bien joué commandant.\n");
       enemy = NULL;
-      //alive = 1;
     }
   return (enemy);
 }
