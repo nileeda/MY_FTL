@@ -12,7 +12,8 @@ SRC	=	main.c \
 		game_functions.c \
 		my_getnbr.c \
 		gameloop.c \
-		ennemy.c
+		ennemy.c \
+		player.c
 OBJS	=	$(SRC:%.c=%.o)
 RM	=	rm -f
 CFLAGS	=	-Wall -Werror -Wextra

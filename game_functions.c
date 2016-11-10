@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Wed Nov  9 17:07:15 2016 PATIN Adeline
+** Last update Thu Nov 10 11:57:00 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -40,28 +40,31 @@ int	jump(t_ship *ship)
 {
   my_putstr_color("blue", "Préparation du super saut... 3... 2... 1...\n");
   ship->nav_tools->sector++;
+  ship->drive->energy--;
   my_putstr_color("blue", "Bienvenue dans la dimention suivante.\n");
   return (ship->nav_tools->sector);
 }
 
 int	stat(t_ship *ship)
 {
-  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
+  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+  my_putstr_color("blue", "|        LE VAISSEAU         \n");
+  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| Coque : ");
   my_put_nbr(ship->hull);
-  my_putstr("                 |\n");
-  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
+  my_putstr("                 \n");
+  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| Dommage : ");
   my_put_nbr(ship->weapon->damage);
-  my_putstr("               |\n");
-  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
+  my_putstr("               \n");
+  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| Energy : ");
   my_put_nbr(ship->drive->energy);
-  my_putstr("                |\n");
-  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|\n");
+  my_putstr("                \n");
+  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| Esquive : ");
   my_put_nbr(ship->nav_tools->evade);
-  my_putstr("               |\n");
+  my_putstr("               \n");
   my_putstr(" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n");
   return (0);
 }

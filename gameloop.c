@@ -5,15 +5,14 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Wed Nov  9 19:43:31 2016 PATIN Adeline
+** Last update Thu Nov 10 13:51:35 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
 
-int	test(t_ship *ship);
 static const t_gamecontrol	my_control[] = {
-  {"attack", &test},
-  {"detect", &test},
+  {"attack", &attack_ship},
+  {"detect", &detect_freight},
   {"jump", &jump},
   {"getbonus", &get_bonus},
   {"controlsystem", &system_control},
@@ -31,7 +30,7 @@ t_ship		*start()
   add_weapon_to_ship(ship);
   add_ftl_drive_to_ship(ship);
   add_navigation_tools_to_ship(ship);
-  add_container_to_ship(ship);
+  //add_container_to_ship(ship);
   return (ship);
 }
 
@@ -39,28 +38,24 @@ void		gameloop(t_ship *ship)
 {
   char		*command;
   t_enemy	*ia;
+  int		alive;
 
+  alive = 1;
   ia = malloc(sizeof(*ia));
   if (ia == NULL)
-    my_putstr("ERROR\n");
-  while (ship->nav_tools->sector != 10)
+    my_putstr("ERROR MALLOC IA\n");
+  while (ship->nav_tools->sector != 10 && alive == 1)
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
       ia = test_opt(ship, ia, command);
       if (ia != NULL)
 	{
-	  lifepoint_ia(ia);
-	  attack_ia(ship, ia);
+	  ia = actions_ia(ia, ship);
 	}
+      alive = player_alive(ship);
     }
 }
-
-int	test(t_ship *ship)
-{
-  return (ship->nav_tools->sector);
-}
-
 
 t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
 {
@@ -76,19 +71,20 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
 	  if (my_strcmp(command, my_control[2].control) == 0)
 	    {
 	      my_control[2].funct(ship);
-	      ia = appear(ia);
-	      bool = 1;
+	      ia = appear();
 	    }
 	  else
-	    {
-	      my_putstr_color("blue", "Execution en cours...\n");
-	      my_control[i].funct(ship);
-	      return (NULL);
-	    }
+	    my_control[i].funct(ship, ia);
+	  bool = 1;
 	}
       i++;
     }
   if (bool == 0)
     my_putstr_color("red", "[COMMANDE INCONNUE]\n");
   return (ia);
+}
+
+int	detect_freight()
+{
+  return (0);
 }
