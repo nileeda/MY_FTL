@@ -5,23 +5,13 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Thu Nov 10 11:56:23 2016 PATIN Adeline
-** Last update Thu Nov 10 15:48:29 2016 PATIN Adeline
+** Last update Thu Nov 10 17:06:14 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdio.h>
 
 int	attack_ship(t_ship *ship, t_enemy *enemy)
 {
-  if (my_strcmp(ship->weapon->system_state, "offline") == 0)
-    {
-      my_putstr("Cap'taine, le systeme d'armement est HS...\n");
-      return (1);
-    }
-  else if (enemy->lifepoint <= 0)
-    {
-      my_putstr("Cap'taine, il n'y a pas d'ennemi !\n");
-      return (1);
-    }
   if (enemy != NULL)
     {
       my_putstr_color("blue", "A L'ATTAQUE !\n");
@@ -30,6 +20,8 @@ int	attack_ship(t_ship *ship, t_enemy *enemy)
       my_put_nbr(ship->weapon->damage);
       my_putstr_color("blue", " PV !\n");
     }
+  else
+    my_putstr("Nous avons un problème...\n");
   return (0);
 }
 
@@ -48,31 +40,4 @@ int	player_alive(t_ship *ship)
       return (0);
     }
   return (1);
-}
-
-void	test_opt_select(t_ship *ship, t_enemy *ia, char *command)
-{
-  if (ia->lifepoint > 0)
-    {
-      if ((my_strcmp(command, "jump") == 0) &&
-	  ((my_strcmp("offline", ship->drive->system_state) == 0) ||
-	   (ia->lifepoint > 0)))
-	my_putstr("JE PEUX PAS JUMP PLUMES DE CANARD\n");
-    }
-  /*else if (ia->lifepoint == 0)
-    {
-      if ((my_strcmp("offline", "attack") == 0) &&
-	       ((my_strcmp(command, ship->weapon->system_state) == 0) ||
-		(ia != NULL)))
-	my_putstr("JE PEUX PAS ATTACK POIL DE COCHON\n");
-	}
-  else
-    {
-      if ((my_strcmp(command, "jump") == 0) &&
-	  (my_strcmp("offline", ship->drive->system_state) == 0))
-	my_putstr("JE PEUX PAS JUMP PLUMES DE CANARD\n");
-      else if ((my_strcmp("offline", "detect") == 0) &&
-	       (my_strcmp(command, ship->nav_tools->system_state) == 0))
-	my_putstr("JE PEUX PAS DETECT TETE DE CHAMPIGNON\n");
-	}*/
 }

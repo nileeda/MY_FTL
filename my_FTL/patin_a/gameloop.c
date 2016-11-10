@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Thu Nov 10 16:03:37 2016 PATIN Adeline
+** Last update Thu Nov 10 17:52:15 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -44,12 +44,11 @@ void		gameloop(t_ship *ship)
   ia = malloc(sizeof(*ia));
   if (ia == NULL)
     my_putstr("ERROR MALLOC IA\n");
-  ia->lifepoint = -10;
+  ia = NULL;
   while (ship->nav_tools->sector != 10 && alive == 1)
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
-      //test_opt_select(ship, ia, command);
       ia = test_opt(ship, ia, command);
       if (ia != NULL && ia->lifepoint >= 0)
 	ia = actions_ia(ia, ship);
@@ -61,6 +60,7 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
 {
   int	i;
   int	bool;
+  int	result;
 
   i = 0;
   bool = 0;
@@ -70,13 +70,12 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
 	{
 	  if (my_strcmp(command, my_control[2].control) == 0)
 	    {
-	      my_control[2].funct(ship);
-	      ia = appear();
+	      result = my_control[2].funct(ship, ia);
+	      if (result == 1)
+		ia = appear();
 	    }
 	  else
-	    {
-	      my_control[i].funct(ship, ia);
-	    }
+	    my_control[i].funct(ship, ia);
 	  bool = 1;
 	}
       i++;
@@ -84,9 +83,4 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
   if (bool == 0)
     my_putstr_color("red", "[COMMANDE INCONNUE]\n");
   return (ia);
-}
-
-int	detect_freight()
-{
-  return (0);
 }
