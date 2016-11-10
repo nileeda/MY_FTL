@@ -5,13 +5,23 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Thu Nov 10 11:56:23 2016 PATIN Adeline
-** Last update Thu Nov 10 15:35:49 2016 PATIN Adeline
+** Last update Thu Nov 10 15:48:29 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdio.h>
 
 int	attack_ship(t_ship *ship, t_enemy *enemy)
 {
+  if (my_strcmp(ship->weapon->system_state, "offline") == 0)
+    {
+      my_putstr("Cap'taine, le systeme d'armement est HS...\n");
+      return (1);
+    }
+  else if (enemy->lifepoint <= 0)
+    {
+      my_putstr("Cap'taine, il n'y a pas d'ennemi !\n");
+      return (1);
+    }
   if (enemy != NULL)
     {
       my_putstr_color("blue", "A L'ATTAQUE !\n");
