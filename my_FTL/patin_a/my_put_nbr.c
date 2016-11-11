@@ -5,9 +5,11 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Sat Oct 22 15:00:49 2016 PATIN Adeline
-** Last update Fri Nov 11 12:46:19 2016 PATIN Adeline
+** Last update Fri Nov 11 15:48:50 2016 PATIN Adeline
 */
 #include "ftl.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 void	my_put_nbr(int n)
 {
@@ -30,4 +32,9 @@ void	my_put_nbr(int n)
       my_putchar(i + 48);
       temp = temp / 10;
     }
+}
+
+void	my_putchar(const char c)
+{
+  write(1, &c, 1);
 }

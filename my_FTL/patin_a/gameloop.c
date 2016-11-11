@@ -5,8 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Fri Nov 11 15:12:33 2016 PATIN Adeline
+** Last update Fri Nov 11 15:22:02 2016 PATIN Adeline
 */
+
 #include "ftl.h"
 
 static const t_gamecontrol	my_control[] = {
