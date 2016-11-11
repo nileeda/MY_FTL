@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Sat Oct 22 15:00:49 2016 PATIN Adeline
-** Last update Wed Oct 26 19:46:07 2016 PATIN Adeline
+** Last update Fri Nov 11 12:44:01 2016 PATIN Adeline
 */
-
-void	my_putchar(char c);
+#include "ftl.h"
 
 void	my_put_nbr(int n)
 {
@@ -31,4 +30,22 @@ void	my_put_nbr(int n)
       my_putchar(i + 48);
       temp = temp / 10;
     }
+}
+
+char			*my_strdup(const char *str)
+{
+  int			i;
+  char			*copy;
+
+  i = 0;
+  copy = NULL;
+  if ((copy = malloc((my_strlen(str) + 1) * sizeof(char))) == NULL)
+    return (NULL);
+  while (str[i] != '\0')
+    {
+      copy[i] = str[i];
+      i++;
+    }
+  copy[i] = '\0';
+  return (copy);
 }
