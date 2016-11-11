@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Fri Nov 11 09:59:57 2016 PATIN Adeline
+** Last update Fri Nov 11 10:09:00 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -41,11 +41,9 @@ void	lifepoint_ia(t_enemy *enemy)
   my_putstr_color("cyan", "|          L'ENNEMI          \n");
   my_putstr("| Dommages : ");
   my_put_nbr(enemy->damage);
-  my_putstr("              \n");
   my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| PV : ");
   my_put_nbr(enemy->lifepoint);
-  my_putstr("                    \n");
   my_putstr(" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 }
 
