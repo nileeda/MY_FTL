@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:29:13 2016 PATIN Adeline
-** Last update Mon Nov  7 15:20:41 2016 PATIN Adeline
+** Last update Fri Nov 11 12:17:57 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
 
 t_ship		*create_ship()
 {

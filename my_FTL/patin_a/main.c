@@ -5,11 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Fri Nov 11 09:34:58 2016 PATIN Adeline
+** Last update Fri Nov 11 12:17:41 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <time.h>
-#include <stdlib.h>
 
 int		main()
 {
@@ -24,6 +22,13 @@ int		main()
 
 void		endgame(t_ship *ship, t_enemy *enemy)
 {
+  free(ship->weapon->system_state);
+  free(ship->weapon);
+  free(ship->nav_tools->system_state);
+  free(ship->nav_tools);
+  free(ship->drive->system_state);
+  free(ship->drive);
+  free(ship->container);
   free(ship);
   free(enemy);
   my_putstr_color("green", "[GAME OVER]\n");

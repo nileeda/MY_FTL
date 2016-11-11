@@ -5,11 +5,13 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Fri Nov 11 09:59:11 2016 PATIN Adeline
+** Last update Fri Nov 11 12:11:58 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
 # define	__FTL_H__
+#include <stdlib.h>
+#include <time.h>
 
 typedef				struct	s_ship
 {
@@ -97,7 +99,7 @@ int		jump(t_ship *ship, t_enemy *enemy);
 t_ship		*start();
 void		gameloop(t_ship *ship);
 int		stat(t_ship *ship);
-int		help(t_ship *ship);
+int		help();
 t_enemy		*appear();
 void		lifepoint_ia(t_enemy *enemy);
 t_enemy		*test_opt(t_ship *ship, t_enemy *ia, char *str);

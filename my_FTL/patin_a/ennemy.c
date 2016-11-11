@@ -5,11 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Fri Nov 11 10:09:00 2016 PATIN Adeline
+** Last update Fri Nov 11 12:32:33 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
-#include <time.h>
 
 int	damage_init = 10;
 int	lifepoint_init = 20;
@@ -19,7 +17,6 @@ t_enemy		*appear()
   int		random;
   t_enemy	*enemy;
 
-  srand(time (NULL));
   random = (rand()%10) + 1;
   if (random >= 1 && random <= 3)
     {
@@ -41,21 +38,20 @@ void	lifepoint_ia(t_enemy *enemy)
   my_putstr_color("cyan", "|          L'ENNEMI          \n");
   my_putstr("| Dommages : ");
   my_put_nbr(enemy->damage);
-  my_putstr("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+  my_putstr("\n|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
   my_putstr("| PV : ");
   my_put_nbr(enemy->lifepoint);
-  my_putstr(" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
+  my_putstr("\n ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n");
 }
 
 int	attack_ia(t_ship *ship, t_enemy *enemy)
 {
   int	random;
 
-  srand(time (NULL));
   random = (rand()%100) + 1;
   if (random >= ship->nav_tools->evade && random <= 100)
     {
-      my_putstr_color("cyan", "L'ennemi attaque ! Cachez-vous !\n");
+      my_putstr_color("cyan", "L'ennemi a attaque ! Cachez-vous !\n");
       random = (rand()%100) + 1;
       if (random >= 1 && random <= 20)
 	{
@@ -70,7 +66,7 @@ int	attack_ia(t_ship *ship, t_enemy *enemy)
       ship->hull = ship->hull - enemy->damage;
     }
   else
-    my_putstr_color("cyan", "L'ennemi n'attaque pas. Bouuuuh\n");
+    my_putstr_color("blue", "HAHA ! Nous avons esquive. Bien joué Cap'tain!\n");
   return (ship->nav_tools->sector);
 }
 
@@ -80,7 +76,6 @@ int	is_alive(t_enemy *enemy, t_ship *ship)
 
   if (enemy->lifepoint <= 0)
     {
-      srand(time (NULL));
       random = (rand()%2) + 1;
       if (random == 1)
 	ship->drive->energy--;

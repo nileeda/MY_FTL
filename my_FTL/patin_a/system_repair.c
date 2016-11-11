@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Tue Nov  8 09:11:01 2016 PATIN Adeline
-** Last update Tue Nov  8 18:35:51 2016 PATIN Adeline
+** Last update Fri Nov 11 12:25:17 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
 
 static const t_repair_command	repair_comm[] = {
   {"ftl_drive", &ftl_drive_system_repair},
@@ -24,7 +23,7 @@ int	ftl_drive_system_repair(t_ship *ship)
   ship->drive->system_state = my_strdup("online");
   if (ship->drive->system_state != NULL)
     {
-      my_putstr_color("green", "reparation termine! systeme reacteur OK!\n");
+      my_putstr_color("green", "reparation termine! REACTEUR : OK\n");
       return (0);
     }
   else
@@ -43,7 +42,7 @@ int	navigation_tools_system_repair(t_ship *ship)
   if (ship->drive->system_state != NULL)
     {
       my_putstr_color("green", "reparation termine!");
-      my_putstr_color("green", "systeme de navigation OK!\n");
+      my_putstr_color("green", "SYSTEME DE NAVIGATION : OK\n");
       return (0);
     }
   else
@@ -63,7 +62,7 @@ int	weapon_system_repair(t_ship *ship)
   if (ship->drive->system_state != NULL)
     {
       my_putstr_color("green", "reparation termine! ");
-      my_putstr_color("green", "systeme d'armement OK!\n");
+      my_putstr_color("green", "SYSTEME D'ARMEMENT : OK\n");
       return (0);
     }
   else
@@ -82,7 +81,7 @@ int	system_repair(t_ship *ship)
 
   bool = 0;
   i = 0;
-  my_putstr_color("cyan", "repair_system~>");
+  my_putstr_color("blue", "repair_system~>");
   str = readline();
   if (str == NULL)
     my_putstr("[SYSTEM FAILURE] : le lecteur de commande est bloque\n");

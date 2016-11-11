@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Thu Nov 10 11:56:23 2016 PATIN Adeline
-** Last update Fri Nov 11 09:40:33 2016 PATIN Adeline
+** Last update Fri Nov 11 12:31:33 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
 
 int	attack_ship(t_ship *ship, t_enemy *enemy)
 {
@@ -21,7 +20,7 @@ int	attack_ship(t_ship *ship, t_enemy *enemy)
       my_putstr_color("blue", " PV !\n");
     }
   else
-    my_putstr("Nous avons un problème...\n");
+    my_putstr("Nous rencontrons un problème...\n");
   return (0);
 }
 
@@ -29,14 +28,14 @@ int	player_alive(t_ship *ship)
 {
   if (ship->hull <= 0)
     {
-      my_putstr_color("blue", "La coque du vaisseau est foutue.\n");
+      my_putstr_color("red", "La coque du vaisseau est foutue.\n");
       my_putstr_color("red", "Nous devons nous replier.\n");
       return (0);
     }
   else if (ship->drive->energy <= 0 && ship->nav_tools->sector < 10)
     {
-      my_putstr_color("blue", "Nous sombrons dans les ténèbres.\n");
-      my_putstr_color("red", "Adieu.\n");
+      my_putstr_color("red", "Sans energie, nous sombrons dans les ");
+      my_putstr_color("red", "tenebres.\nAdieu.\n");
       return (0);
     }
   return (1);
