@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Fri Nov 11 12:15:02 2016 PATIN Adeline
+** Last update Fri Nov 11 12:40:53 2016 PATIN Adeline
 */
 #include "ftl.h"
 
@@ -87,4 +87,18 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
   if (bool == 0)
     my_putstr_color("red", "[COMMANDE INCONNUE]\n");
   return (ia);
+}
+
+void		endgame(t_ship *ship, t_enemy *enemy)
+{
+  free(ship->weapon->system_state);
+  free(ship->weapon);
+  free(ship->nav_tools->system_state);
+  free(ship->nav_tools);
+  free(ship->drive->system_state);
+  free(ship->drive);
+  free(ship->container);
+  free(ship);
+  free(enemy);
+  my_putstr_color("green", "[GAME OVER]\n");
 }
