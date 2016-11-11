@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Fri Nov 11 15:22:02 2016 PATIN Adeline
+** Last update Fri Nov 11 18:14:05 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -29,13 +29,36 @@ t_ship		*start()
   my_putstr("BIENVENUE ! NOUS ALLONS CREER VOTRE VAISSEAU...\n");
   my_putstr("Vaisseau en cours de construction...\n");
   ship = create_ship();
-  add_weapon_to_ship(ship);
-  add_ftl_drive_to_ship(ship);
-  add_navigation_tools_to_ship(ship);
-  add_container_to_ship(ship);
-  my_putstr("Vaisseau terminé ! Nous sommes prêts, commandant.\n");
-  my_putstr("Commandant, si vous avez un trou de mémoire, tapez \"help\"\n");
-  return (ship);
+  if (ship != NULL)
+    {
+      add_weapon_to_ship(ship);
+      add_ftl_drive_to_ship(ship);
+      add_navigation_tools_to_ship(ship);
+      add_container_to_ship(ship);
+      return (ship);
+    }
+  else
+    {
+      my_putstr("Vous ne pouvez pas parcourir l'univers sans vaisseau\n");
+      return (NULL);
+    }
+}
+
+int		start_test(t_ship *ship)
+{
+  if (ship->container == NULL || ship->drive == NULL || ship->weapon == NULL
+      || ship->nav_tools == NULL)
+    {
+      my_putstr("Le vaisseau a explosé.\n");
+      my_putstr("Vous ne pouvez pas parcourir l'univers sans vaisseau\n");
+      return (1);
+    }
+  else
+    {
+      my_putstr("Vaisseau terminé ! Nous sommes prêts, commandant.\n");
+      my_putstr("Si vous avez un trou de mémoire, tapez \"help\"\n");
+      return (0);
+    }
 }
 
 void		gameloop(t_ship *ship)
