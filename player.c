@@ -5,8 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Thu Nov 10 11:56:23 2016 PATIN Adeline
-** Last update Fri Nov 11 12:31:33 2016 PATIN Adeline
+** Last update Fri Nov 11 15:22:16 2016 PATIN Adeline
 */
+
 #include "ftl.h"
 
 int	attack_ship(t_ship *ship, t_enemy *enemy)

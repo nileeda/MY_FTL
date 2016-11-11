@@ -5,8 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Fri Nov 11 12:28:30 2016 PATIN Adeline
+** Last update Fri Nov 11 15:21:50 2016 PATIN Adeline
 */
+
 #include "ftl.h"
 
 static int	detect = -1;

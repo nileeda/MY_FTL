@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Fri Nov 11 15:12:47 2016 PATIN Adeline
+** Last update Fri Nov 11 15:48:39 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -73,10 +73,10 @@ typedef		struct s_enemy
   int		lifepoint;
 }		t_enemy;
 
-void		my_putchar(char c);
-void		my_putstr(char *str);
+void		my_putchar(const char c);
+void		my_putstr(const char *str);
 void		my_put_nbr(int nb);
-char		*my_strdup(char *str);
+char		*my_strdup(const char *str);
 t_ship		*create_ship();
 int		add_weapon_to_ship(t_ship *ship);
 int		add_ftl_drive_to_ship(t_ship *ship);

@@ -5,8 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 19:13:23 2016 PATIN Adeline
-** Last update Fri Nov 11 12:22:42 2016 PATIN Adeline
+** Last update Fri Nov 11 15:22:26 2016 PATIN Adeline
 */
+
 #include "ftl.h"
 
 void	ftl_drive_system_check(t_ship *ship)

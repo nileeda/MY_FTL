@@ -5,8 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Fri Nov 11 12:32:33 2016 PATIN Adeline
+** Last update Fri Nov 11 15:21:39 2016 PATIN Adeline
 */
+
 #include "ftl.h"
 
 int	damage_init = 10;

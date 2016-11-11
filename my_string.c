@@ -18,8 +18,10 @@
 ** bleu (blue), violet (magenta), et bleu cyan (cyan), elle vous permet également d'effacer
 ** tout ce qui est actuellement affiché à l'écran (clear) avant d'afficher votre chaine de caractères.
 */
-#include		<stdlib.h>
-#include		<unistd.h>
+
+#include "ftl.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 const char		*reset_color = "\033[0m";
 
@@ -42,11 +44,6 @@ static const t_color	g_color[] =
     {"cyan", "\033[36m"},
     {NULL, NULL}
   };
-
-void			my_putchar(const char c)
-{
-  write(1, &c, 1);
-}
 
 int			my_strlen(const char *str)
 {
