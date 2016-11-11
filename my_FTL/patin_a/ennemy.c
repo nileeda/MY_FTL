@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 15:19:29 2016 PATIN Adeline
-** Last update Fri Nov 11 09:56:57 2016 PATIN Adeline
+** Last update Fri Nov 11 09:59:57 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -27,7 +27,6 @@ t_enemy		*appear()
       enemy = malloc(sizeof(*enemy));
       enemy->damage = damage_init;
       enemy->lifepoint = lifepoint_init;
-      enemy->isalive = 1;
       damage_init = damage_init * 1.5;
       lifepoint_init = lifepoint_init * 1.5;
       return (enemy);

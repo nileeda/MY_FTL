@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Fri Nov 11 09:35:12 2016 PATIN Adeline
+** Last update Fri Nov 11 09:59:11 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -69,7 +69,6 @@ typedef		struct s_enemy
 {
   int		damage;
   int		lifepoint;
-  int		isalive;
 }		t_enemy;
 
 void		my_putchar(char c);
