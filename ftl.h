@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Thu Nov 10 18:20:22 2016 PATIN Adeline
+** Last update Fri Nov 11 09:35:12 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -108,4 +108,5 @@ int		attack_ship(t_ship *ship, t_enemy *enemy);
 t_enemy		*actions_ia(t_enemy *enemy, t_ship *ship);
 int		detect_freight(t_ship *ship);
 int		player_alive(t_ship *ship);
+void		endgame(t_ship *ship, t_enemy *enemy);
 #endif

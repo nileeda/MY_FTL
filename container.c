@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Thu Nov 10 19:53:25 2016 PATIN Adeline
+** Last update Fri Nov 11 09:21:41 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -77,7 +77,6 @@ void	del_freight_from_container(t_ship *ship, t_freight *freight)
 	  ship->container->last = NULL;
 	}
       ship->container->nb_elem--;
-      free(freight);
     }
 }
 
@@ -102,5 +101,6 @@ int		get_bonus(t_ship *ship)
       del_freight_from_container(ship, pointeur);
       pointeur = pointeur->next;
     }
+  free(pointeur);
   return (0);
 }

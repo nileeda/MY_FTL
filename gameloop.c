@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Thu Nov 10 18:21:17 2016 PATIN Adeline
+** Last update Fri Nov 11 09:49:27 2016 PATIN Adeline
 */
 #include "ftl.h"
 #include <stdlib.h>
@@ -50,10 +50,11 @@ void		gameloop(t_ship *ship)
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
       ia = test_opt(ship, ia, command);
-      if (ia != NULL && ia->lifepoint >= 0)
+      if (ia != NULL)
 	ia = actions_ia(ia, ship);
       alive = player_alive(ship);
     }
+  endgame(ship, ia);
 }
 
 t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
