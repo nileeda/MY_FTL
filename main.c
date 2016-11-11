@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Fri Nov 11 15:20:39 2016 PATIN Adeline
+** Last update Fri Nov 11 18:16:05 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -14,14 +14,19 @@ int		main()
 {
   t_ship	*ship;
   int		loop;
+  int		game_start;
 
+  game_start = 1;
   loop = 0;
   srand(time (NULL));
   while (loop == 0)
     {
       my_putstr_color("clear", "\n");
       ship = start();
-      gameloop(ship);
+      if (ship != NULL)
+	game_start = start_test(ship);
+      if (game_start == 0)
+	gameloop(ship);
       loop = restart();
     }
   return (0);
