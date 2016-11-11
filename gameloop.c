@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Fri Nov 11 09:49:27 2016 PATIN Adeline
+** Last update Fri Nov 11 12:15:02 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
 
 static const t_gamecontrol	my_control[] = {
   {"attack", &attack_ship},
@@ -26,11 +25,15 @@ t_ship		*start()
 {
   t_ship	*ship;
 
+  my_putstr("BIENVENUE ! NOUS ALLONS CREER VOTRE VAISSEAU...\n");
+  my_putstr("Vaisseau en cours de construction...\n");
   ship = create_ship();
   add_weapon_to_ship(ship);
   add_ftl_drive_to_ship(ship);
   add_navigation_tools_to_ship(ship);
   add_container_to_ship(ship);
+  my_putstr("Vaisseau terminé ! Nous sommes prêts, commandant.\n");
+  my_putstr("Commandant, si vous avez un trou de mémoire, tapez \"help\"\n");
   return (ship);
 }
 
