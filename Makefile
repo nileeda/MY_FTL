@@ -10,7 +10,6 @@ SRC	=	main.c \
 		system_repair.c \
 		readline.c \
 		game_functions.c \
-		my_getnbr.c \
 		gameloop.c \
 		ennemy.c \
 		player.c
