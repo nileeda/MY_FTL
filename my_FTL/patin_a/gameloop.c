@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Fri Nov 11 12:40:53 2016 PATIN Adeline
+** Last update Fri Nov 11 12:52:52 2016 PATIN Adeline
 */
 #include "ftl.h"
 
@@ -57,6 +57,10 @@ void		gameloop(t_ship *ship)
 	ia = actions_ia(ia, ship);
       alive = player_alive(ship);
     }
+  if (alive == 0)
+    my_putstr_color("red", "Vous avez perdu\n");
+  else
+    my_putstr_color("green", "YEAH ! Gagné ! Bien joué :)\n");
   endgame(ship, ia);
 }
 
