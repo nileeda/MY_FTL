@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Fri Nov 11 18:00:57 2016 PATIN Adeline
+** Last update Sat Nov 12 10:18:30 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -37,7 +37,7 @@ char	*select_bonus()
 
 int	jump(t_ship *ship, t_enemy *enemy)
 {
-  if (enemy == NULL)
+  if (enemy == NULL && my_strcmp("offline", ship->nav_tools->system_state) != 0)
     {
       my_putstr_color("blue", "Préparation du super saut... 3... 2... 1...\n");
       ship->nav_tools->sector++;
