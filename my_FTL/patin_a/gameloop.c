@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Sat Nov 12 12:00:47 2016 PATIN Adeline
+** Last update Sat Nov 12 12:08:30 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -78,7 +78,7 @@ void		gameloop(t_ship *ship)
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
       if (my_strcmp(command, "") == 0 || command == NULL)
-	  command = NULL;
+	command = NULL;
       ia = test_opt(ship, ia, command);
       if (ia != NULL)
 	ia = actions_ia(ia, ship);
@@ -86,6 +86,8 @@ void		gameloop(t_ship *ship)
     }
   if (my_strcmp(command, "") != 0 && command != NULL)
     endgame(ship, ia, alive);
+  else
+    my_putstr_color("red", "[SYSTEME DE COMMANDE HS]\n");
 }
 
 t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
