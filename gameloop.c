@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Sat Nov 12 10:33:09 2016 PATIN Adeline
+** Last update Sat Nov 12 12:00:47 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -69,13 +69,10 @@ void		gameloop(t_ship *ship)
   int		alive;
 
   alive = 1;
-  command = NULL;
   ia = malloc(sizeof(*ia));
   if (ia == NULL)
     my_putstr("ERROR MALLOC IA\n");
   ia = NULL;
-  my_putstr("Pour commencer, tapez un caractère et appuyez sur entrée\n");
-  command = readline();
   while ((ship->nav_tools->sector != 10) && (alive == 1) && (command != NULL))
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
@@ -120,20 +117,20 @@ t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
   return (ia);
 }
 
-  void		endgame(t_ship *ship, t_enemy *enemy, int alive)
-  {
-    if (alive == 0)
-      my_putstr_color("red", "Vous avez perdu\n");
-    else
-      my_putstr_color("green", "YEAH ! Gagné ! Bien joué :)\n");
-    free(ship->weapon->system_state);
-    free(ship->weapon);
-    free(ship->nav_tools->system_state);
-    free(ship->nav_tools);
-    free(ship->drive->system_state);
-    free(ship->drive);
-    free(ship->container);
-    free(ship);
-    free(enemy);
-    my_putstr_color("green", "[GAME OVER]\n");
-  }
+void		endgame(t_ship *ship, t_enemy *enemy, int alive)
+{
+  if (alive == 0)
+    my_putstr_color("red", "Vous avez perdu\n");
+  else
+    my_putstr_color("green", "YEAH ! Gagné ! Bien joué :)\n");
+  free(ship->weapon->system_state);
+  free(ship->weapon);
+  free(ship->nav_tools->system_state);
+  free(ship->nav_tools);
+  free(ship->drive->system_state);
+  free(ship->drive);
+  free(ship->container);
+  free(ship);
+  free(enemy);
+  my_putstr_color("green", "[GAME OVER]\n");
+}

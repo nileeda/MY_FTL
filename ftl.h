@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:17:43 2016 PATIN Adeline
-** Last update Sat Nov 12 09:31:51 2016 PATIN Adeline
+** Last update Sat Nov 12 12:06:30 2016 PATIN Adeline
 */
 
 #ifndef __FTL_H__
@@ -77,40 +77,39 @@ void		my_putchar(const char c);
 void		my_putstr(const char *str);
 void		my_put_nbr(int nb);
 char		*my_strdup(const char *str);
+int		my_strcmp(const char *s1, const char *s2);
+void		my_putstr_color(const char *color, const char *str);
+char		*readline(void);
 t_ship		*create_ship();
 int		add_weapon_to_ship(t_ship *ship);
 int		add_ftl_drive_to_ship(t_ship *ship);
 int		add_navigation_tools_to_ship(t_ship *ship);
 int		add_container_to_ship(t_ship *ship);
-void		my_putstr_color(const char *color, const char *str);
-int		my_strcmp(const char *s1, const char *s2);
 void		add_freight_to_container(t_ship *ship, t_freight *freight);
 void		del_freight_from_container(t_ship *ship, t_freight *freight);
 int		get_bonus(t_ship *ship);
 int		system_control(t_ship *ship);
-char		*readline(void);
 int		system_repair(t_ship *ship);
 int		navigation_tools_system_repair(t_ship *ship);
 int		weapon_system_repair(t_ship *ship);
 int		ftl_drive_system_repair(t_ship *ship);
 char		*select_bonus();
-int		my_getnbr(char *str);
 int		jump(t_ship *ship, t_enemy *enemy);
-t_ship		*start();
-void		gameloop(t_ship *ship);
 int		stat(t_ship *ship);
 int		help();
+int		detect_freight(t_ship *ship);
+t_enemy		*test_opt(t_ship *ship, t_enemy *ia, char *str);
 t_enemy		*appear();
 void		lifepoint_ia(t_enemy *enemy);
-t_enemy		*test_opt(t_ship *ship, t_enemy *ia, char *str);
 int		attack_ia(t_ship *ship, t_enemy *enemy);
 int		is_alive(t_enemy *enemy, t_ship *ship);
-int		attack_ship(t_ship *ship, t_enemy *enemy);
 t_enemy		*actions_ia(t_enemy *enemy, t_ship *ship);
-int		detect_freight(t_ship *ship);
+int		attack_ship(t_ship *ship, t_enemy *enemy);
 int		player_alive(t_ship *ship);
-void		endgame(t_ship *ship, t_enemy *enemy, int restart);
-int		restart();
+t_ship		*start();
 int		start_test(t_ship *ship);
+void		gameloop(t_ship *ship);
+void		endgame(t_ship *ship, t_enemy *enemy, int restart);
+
 
 #endif
