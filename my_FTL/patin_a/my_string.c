@@ -1,4 +1,13 @@
 /*
+** my_string.c for  in /home/nileeda/Documents/C/My_FTL/patin_a
+** 
+** Made by PATIN Adeline
+** Login   <patin_a@etna-alternance.net>
+** 
+** Started on  Sat Nov 12 12:19:55 2016 PATIN Adeline
+** Last update Sat Nov 12 12:19:58 2016 PATIN Adeline
+*/
+/*
 ** Ce fichier contient les fonctions de bases pour gérer des strings (les chaines de caractères).
 **
 ** my_putchar vous permet d'afficher un caractère sour la sortie standard.
