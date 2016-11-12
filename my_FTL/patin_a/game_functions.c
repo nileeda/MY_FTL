@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 10:02:51 2016 PATIN Adeline
-** Last update Sat Nov 12 10:18:30 2016 PATIN Adeline
+** Last update Sat Nov 12 10:29:07 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -23,9 +23,9 @@ char	*select_bonus()
       random = (rand()%100) + 1;
       if (random >= 1 && random < 34)
 	bonus = "attackbonus";
-      else if (random >=34 && random < 67)
+      else if (random >= 34 && random < 67)
 	bonus = "evadebonus";
-      else if (random >=67 && random < 99)
+      else if (random >= 67 && random < 99)
 	bonus = "energy";
       else
 	bonus = "scrap";

@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 13:56:33 2016 PATIN Adeline
-** Last update Fri Nov 11 18:17:13 2016 PATIN Adeline
+** Last update Sat Nov 12 10:26:17 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -33,6 +33,7 @@ int		add_container_to_ship(t_ship *ship)
 void	add_freight_to_container(t_ship *ship, t_freight *freight)
 {
   char	*my_bonus;
+
   my_bonus = select_bonus();
   if (ship->container->last == NULL && ship->container->first == NULL)
     {

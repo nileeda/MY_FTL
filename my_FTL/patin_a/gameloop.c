@@ -5,22 +5,23 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Wed Nov  9 11:41:05 2016 PATIN Adeline
-** Last update Sat Nov 12 10:16:06 2016 PATIN Adeline
+** Last update Sat Nov 12 10:33:09 2016 PATIN Adeline
 */
 
 #include "ftl.h"
 
-static const t_gamecontrol	my_control[] = {
-  {"attack", &attack_ship},
-  {"detect", &detect_freight},
-  {"jump", &jump},
-  {"getbonus", &get_bonus},
-  {"controlsystem", &system_control},
-  {"repairsystem", &system_repair},
-  {"stat", &stat},
-  {"help", &help},
-  {NULL, NULL}
-};
+static const t_gamecontrol	my_control[] =
+  {
+    {"attack", &attack_ship},
+    {"detect", &detect_freight},
+    {"jump", &jump},
+    {"getbonus", &get_bonus},
+    {"controlsystem", &system_control},
+    {"repairsystem", &system_repair},
+    {"stat", &stat},
+    {"help", &help},
+    {NULL, NULL}
+  };
 
 t_ship		*start()
 {
@@ -73,10 +74,9 @@ void		gameloop(t_ship *ship)
   if (ia == NULL)
     my_putstr("ERROR MALLOC IA\n");
   ia = NULL;
-  my_putstr("Pour commencer, taper sur une touche différente d'entrée\n");
+  my_putstr("Pour commencer, tapez un caractère et appuyez sur entrée\n");
   command = readline();
-  while ((ship->nav_tools->sector != 10) && (alive == 1) &&
-	 (command != NULL))
+  while ((ship->nav_tools->sector != 10) && (alive == 1) && (command != NULL))
     {
       my_putstr_color("blue", "[A VOS ORDRES COMMANDANT] >");
       command = readline();
@@ -92,33 +92,33 @@ void		gameloop(t_ship *ship)
 }
 
 t_enemy	*test_opt(t_ship *ship, t_enemy *ia, char *command)
-  {
-    int	i;
-    int	bool;
-    int	result;
+{
+  int	i;
+  int	bool;
+  int	result;
 
-    i = 0;
-    bool = 0;
-    while (my_control[i].control != NULL)
-      {
-	if (my_strcmp(command, my_control[i].control) == 0)
-	  {
-	    if (my_strcmp(command, my_control[2].control) == 0)
-	      {
-		result = my_control[2].funct(ship, ia);
-		if (result == 1)
-		  ia = appear();
-	      }
-	    else
-	      my_control[i].funct(ship, ia);
-	    bool = 1;
-	  }
-	i++;
-      }
-    if (bool == 0)
-      my_putstr_color("red", "[COMMANDE INCONNUE]\n");
-    return (ia);
-  }
+  i = 0;
+  bool = 0;
+  while (my_control[i].control != NULL)
+    {
+      if (my_strcmp(command, my_control[i].control) == 0)
+	{
+	  if (my_strcmp(command, my_control[2].control) == 0)
+	    {
+	      result = my_control[2].funct(ship, ia);
+	      if (result == 1)
+		ia = appear();
+	    }
+	  else
+	    my_control[i].funct(ship, ia);
+	  bool = 1;
+	}
+      i++;
+    }
+  if (bool == 0)
+    my_putstr_color("red", "[COMMANDE INCONNUE]\n");
+  return (ia);
+}
 
   void		endgame(t_ship *ship, t_enemy *enemy, int alive)
   {
