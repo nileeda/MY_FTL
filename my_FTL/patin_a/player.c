@@ -5,14 +5,14 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Thu Nov 10 11:56:23 2016 PATIN Adeline
-** Last update Fri Nov 11 15:22:16 2016 PATIN Adeline
+** Last update Sat Nov 12 10:19:16 2016 PATIN Adeline
 */
 
 #include "ftl.h"
 
 int	attack_ship(t_ship *ship, t_enemy *enemy)
 {
-  if (enemy != NULL)
+  if (enemy != NULL && my_strcmp("offline", ship->weapon->system_state) != 0)
     {
       my_putstr_color("blue", "A L'ATTAQUE !\n");
       enemy->lifepoint = enemy->lifepoint - ship->weapon->damage;

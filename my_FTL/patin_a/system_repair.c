@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Tue Nov  8 09:11:01 2016 PATIN Adeline
-** Last update Fri Nov 11 15:22:36 2016 PATIN Adeline
+** Last update Sat Nov 12 08:53:47 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -84,7 +84,7 @@ int	system_repair(t_ship *ship)
   i = 0;
   my_putstr_color("blue", "repair_system~>");
   str = readline();
-  if (str == NULL)
+  if (str == NULL || my_strcmp(str, "") == 0)
     my_putstr("[SYSTEM FAILURE] : le lecteur de commande est bloque\n");
   while (repair_comm[i].repair != NULL)
     {

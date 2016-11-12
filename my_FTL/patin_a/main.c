@@ -5,7 +5,7 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Mon Nov  7 09:52:56 2016 PATIN Adeline
-** Last update Fri Nov 11 18:16:05 2016 PATIN Adeline
+** Last update Sat Nov 12 10:14:45 2016 PATIN Adeline
 */
 
 #include "ftl.h"
@@ -38,6 +38,7 @@ int	restart()
 
   str = NULL;
   my_putstr("Voulez-vous rejouer ?(o/n)\n");
+  str = readline();
   while (my_strcmp("O", str) != 0 && my_strcmp("o", str) != 0 &&
 	 my_strcmp("n", str) != 0 && my_strcmp("N", str) != 0)
     str = readline();
