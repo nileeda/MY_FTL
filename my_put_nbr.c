@@ -5,10 +5,9 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Sat Oct 22 15:00:49 2016 PATIN Adeline
-** Last update Fri Nov 11 15:48:50 2016 PATIN Adeline
+** Last update Sat Nov 12 10:34:21 2016 PATIN Adeline
 */
 #include "ftl.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 void	my_put_nbr(int n)

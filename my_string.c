@@ -20,7 +20,6 @@
 */
 
 #include "ftl.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 const char		*reset_color = "\033[0m";

@@ -5,17 +5,18 @@
 ** Login   <patin_a@etna-alternance.net>
 ** 
 ** Started on  Tue Nov  8 09:11:01 2016 PATIN Adeline
-** Last update Sat Nov 12 08:53:47 2016 PATIN Adeline
+** Last update Sat Nov 12 10:37:38 2016 PATIN Adeline
 */
 
 #include "ftl.h"
 
-static const t_repair_command	repair_comm[] = {
-  {"ftl_drive", &ftl_drive_system_repair},
-  {"navigation_tools", &navigation_tools_system_repair},
-  {"weapon", &weapon_system_repair},
-  {NULL, NULL}
-};
+static const t_repair_command	repair_comm[] =
+  {
+    {"ftl_drive", &ftl_drive_system_repair},
+    {"navigation_tools", &navigation_tools_system_repair},
+    {"weapon", &weapon_system_repair},
+    {NULL, NULL}
+  };
 
 int	ftl_drive_system_repair(t_ship *ship)
 {
